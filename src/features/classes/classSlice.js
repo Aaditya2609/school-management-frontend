@@ -9,7 +9,6 @@ export const fetchClasses = createAsyncThunk(
     const response = await axios.get(
       'https://school-management-t9dl.onrender.com/api/class',
     )
-    console.log(response.data)
     return response.data
   },
 )
@@ -34,7 +33,6 @@ export const classesSlice = createSlice({
     },
     [fetchClasses.rejected]: (state, action) => {
       state.status = 'error'
-      console.log(action.error.message)
       state.error = action.error.message
     },
   },

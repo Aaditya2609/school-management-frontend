@@ -1,8 +1,9 @@
 import React from 'react'
+import SchoolView from '../components/SchoolView'
 
 function SchoolPage() {
   return (
-    <div>SchoolPage</div>
+    <div><SchoolView/></div>
   )
 }
 

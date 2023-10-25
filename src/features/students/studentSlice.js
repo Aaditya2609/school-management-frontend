@@ -9,7 +9,6 @@ export const fetchStudents = createAsyncThunk(
     const response = await axios.get(
       "https://school-management-t9dl.onrender.com/api/student"
     );
-    console.log(response.data);
     return response.data;
   }
 );
@@ -17,7 +16,6 @@ export const fetchStudents = createAsyncThunk(
 export const addStudentAsync = createAsyncThunk(
   "student/addStudentAsync",
   async (newStudent) => {
-    console.log({ newStudent });
     const response = await axios.post(
       "https://school-management-t9dl.onrender.com/api/student",
       newStudent
@@ -29,7 +27,6 @@ export const addStudentAsync = createAsyncThunk(
 export const updateStudentAsync = createAsyncThunk(
   "students/updateStudentAsync",
   async ({ id, updatedStudent }) => {
-    console.log(id, updatedStudent);
     const response = await axios.post(
       `https://school-management-t9dl.onrender.com/api/student/update/${id}`,
       updatedStudent
@@ -69,14 +66,13 @@ export const studentsSlice = createSlice({
     },
     [fetchStudents.rejected]: (state, action) => {
       state.status = "error";
-      console.log(action.error.message);
       state.error = action.error.message;
     },
     [addStudentAsync.pending]: (state) => {
       state.status = "loading";
     },
     [addStudentAsync.fulfilled]: (state, action) => {
-      state.status = "success";
+      state.status = "idle";
       state.students.push(action.payload);
     },
     [addStudentAsync.rejected]: (state, action) => {

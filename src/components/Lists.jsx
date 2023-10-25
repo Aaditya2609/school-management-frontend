@@ -59,7 +59,7 @@ function Lists({ data, dataType }) {
                     <p className='flex justify-between'>
                         Class: <span>{item.classId.name}</span>
                     </p>
-                </div>) : <div className='flex w-full flex-col justify-between'>
+                </div>) : <div className='flex w-full flex-col justify-between text-xl font-semibold py-2'>
                     <p className='flex justify-between'>
                         Name: <span>{item.name}</span>
                     </p>
