@@ -39,12 +39,18 @@ function ViewDetailsModal({ setShowDetailsModal, data, type }) {
                             <p className='flex justify-between'>
                                 Marks: <span>{data.marks}</span>
                             </p>
-                        </div>) : <div className='flex w-full flex-col justify-between'>
+                        </div>) : <div className='flex w-96 font-semibold text-xl flex-col justify-between my-8'>
                             <p className='flex justify-between'>
                                 Name: <span>{data.name}</span>
                             </p>
                             <p className='flex justify-between'>
                                 Subject: <span>{data.subject}</span>
+                            </p>
+                            <p className='flex justify-between'>
+                                Email: <span>{data.contact.email}</span>
+                            </p>
+                            <p className='flex justify-between'>
+                                Phone: <span>{data.contact.phone}</span>
                             </p>
                         </div>}
                     </div>

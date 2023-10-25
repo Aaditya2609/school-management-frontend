@@ -28,7 +28,7 @@ export const addTeacherAsync = createAsyncThunk(
 
 export const updateTeacherAsync = createAsyncThunk(
   "teachers/updateTeacherAsync",
-  async ( id, updatedTeacher ) => {
+  async ( {id, updatedTeacher} ) => {
     console.log(id, updatedTeacher);
     const response = await axios.post(
       `https://school-management-t9dl.onrender.com/api/teacher/update/${id}`,
@@ -102,9 +102,10 @@ export const teachersSlice = createSlice({
       state.status = "loading";
     },
     [deleteTeacherAsync.fulfilled]: (state, action) => {
+      console.log(action.payload)
       state.status = "success";
       state.teachers = state.teachers.filter(
-        (teacher) => teacher._id !== action.payload.teacher._id
+        (teacher) => teacher._id !== action.payload.Teacher._id
       );
     },
     [deleteTeacherAsync.rejected]: (state, action) => {

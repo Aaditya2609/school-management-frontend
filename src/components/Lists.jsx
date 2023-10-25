@@ -27,7 +27,7 @@ function Lists({ data, dataType }) {
         dispatch(deleteTeacherAsync(id))
     }
     const handleEdit=(item)=>{
-        if(dataType==="student")
+        if(dataType==="students")
         {
         setModalDataType("student")
         setModalData(item)

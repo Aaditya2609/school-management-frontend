@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchClasses } from '../features/classes/classSlice';
 import { addStudentAsync, fetchStudents, updateStudentAsync } from '../features/students/studentSlice';
-import { addTeacherAsync } from '../features/teachers/teacherSlice';
+import { addTeacherAsync, updateTeacherAsync } from '../features/teachers/teacherSlice';
 
 function AddEditDetailsModal({ setShowAddEditDetailModal, type, data, action }) {
     const [tempStudent, setTempStudent] = useState({
@@ -35,11 +35,15 @@ function AddEditDetailsModal({ setShowAddEditDetailModal, type, data, action }) 
     }, [status, dispatch]);
 
     useEffect(() => {
-        if (action === "edit" && data) {
+        if (action === "edit" && data && type==="student") {
             const { _id, ...tempStudentWithoutId } = data;
             setTempStudent(tempStudentWithoutId);
         }
-    }, [action, data]);
+        else  if (action === "edit" && data && type==="teacher") {
+            const { _id, ...tempTeacherWithoutId } = data;
+            setTempTeacher(tempTeacherWithoutId);
+        }
+    }, [action, data,type]);
     
 
     const handleAddEdit = () => {
@@ -77,6 +81,9 @@ function AddEditDetailsModal({ setShowAddEditDetailModal, type, data, action }) 
         {
             if (action === "add") {
                 dispatch(addTeacherAsync(tempTeacher));
+            }
+            else if (action === "edit") {
+                dispatch(updateTeacherAsync({ id: data._id, updatedTeacher: tempTeacher }));
             }
             dispatch(fetchStudents());
             setShowAddEditDetailModal(false);
