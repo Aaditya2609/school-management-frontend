@@ -5,6 +5,7 @@ import StudentPage from './pages/StudentPage';
 import TeachersPage from './pages/TeachersPage';
 import ClassesPage from './pages/ClassesPage';
 import SchoolPage from './pages/SchoolPage';
+import LinksPage from './pages/LinksPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/teachers" element={<TeachersPage />} />
         <Route path="/classes" element={<ClassesPage />} />
         <Route path="/school" element={<SchoolPage />} />
+        <Route path="/links" element={<LinksPage />} />
       </Routes>
       </div>
     </div>

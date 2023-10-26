@@ -21,6 +21,10 @@ function Nav() {
                 }`}>
                 School
             </NavLink>
+            <NavLink to="/links" className={`flex items-center justify-center ${location.pathname.includes('/links') ? 'text-[#29b9f0ff]' : ' text-[white]'
+                }`}>
+                Repo Links
+            </NavLink>
         </div>
 
     )
